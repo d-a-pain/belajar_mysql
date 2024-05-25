@@ -1,0 +1,308 @@
+SELECT - extracts data from a database
+UPDATE - updates data in a database
+DELETE - deletes data from a database
+INSERT INTO - inserts new data into a database
+CREATE DATABASE - creates a new database
+ALTER DATABASE - modifies a database
+CREATE TABLE - creates a new table
+ALTER TABLE - modifies a table
+DROP TABLE - deletes a table
+CREATE INDEX - creates an index (search key)
+DROP INDEX - deletes an index
+
+
+(select)
+SELECT CustomerName, City, Country FROM customers;
+SELECT * FROM customers;
+
+
+(where)
+SELECT * FROM customers WHERE Country = 'Mexico';
+SELECT * FROM customers WHERE CustomerID = 1;
+
+(peng
+hubung)
+SELECT * FROM customers WHERE Country = 'Germany' AND City = 'Berlin';
+SELECT * FROM Customers WHERE City = 'Berlin' OR City = 'Stuttgart';
+SELECT * FROM customers WHERE NOT Country = 'Germany';
+SELECT * FROM customers WHERE Country = 'Germany' AND (City = 'Berlin' OR City = 'Stuttgart');
+SELECT * FROM customers WHERE NOT Country = 'Germany' AND NOT Country = 'USA';
+SELECT * FROM customers ORDER BY Country;
+SELECT * FROM customers ORDER BY Country DESC;
+SELECT * FROM customers ORDER BY Country, CustomerName;
+SELECT * FROM customers ORDER BY Country ASC, CustomerName DESC;
+
+
+(insert)
+INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
+VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway');
+
+
+(load data)
+load data infile '../mysql/(nama file .txt/.csv)' into table (nama table) fileds terminated by ',' enclosed by '"' ignore 1 lines;
+
+
+(update) 
+UPDATE customers SET ContactName = 'Alfred Schmidt', City = 'Frankfurt' WHERE customerID = 1;
+UPDATE customers SET PostalCode = 00000;
+
+
+(delete)
+DELETE FROM customers WHERE CustomerName='Alfreds Futterkiste';
+DELETE FROM (nama table);
+
+
+(limit)
+SELECT * FROM customers LIMIT 3;
+SELECT * FROM customers LIMIT 3,3(LIMIT 3 offset3);
+
+
+(min & max)
+SELECT MIN(Price) AS SmallestPrice FROM products;
+SELECT MAX(Price) AS SmallestPrice FROM products;
+
+
+(count, avg, sum)
+SELECT COUNT(ProductID) FROM products;
+SELECT AVG(Price) FROM products;
+SELECT SUM(Quantity) FROM orderdetails;
+
+
+(like)
+SELECT * FROM customers WHERE CustomerName LIKE 'a%';
+SELECT * FROM customers WHERE CustomerName LIKE '%a';
+SELECT * FROM customers WHERE CustomerName LIKE '%or%';
+SELECT * FROM customers WHERE CustomerName LIKE '_r%';
+SELECT * FROM customers WHERE CustomerName LIKE 'a__%';
+SELECT * FROM customers WHERE ContactName LIKE 'a%o';
+SELECT * FROM customers WHERE CustomerName NOT LIKE 'a%';
+
+
+(regexp)
+SELECT * FROM customers WHERE CustomerName REGEXP '^s.*';
+SELECT * FROM customers WHERE CustomerName REGEXP '^[ms].*[aiueo]$';
+
+
+(in)
+SELECT * FROM customers WHERE Country IN ('Germany', 'France', 'UK');
+SELECT * FROM customers WHERE Country NOT IN ('Germany', 'France', 'UK');
+SELECT * FROM customers WHERE Country IN (SELECT Country FROM suppliers);
+
+
+(between)
+SELECT * FROM products WHERE Price NOT BETWEEN 10 AND 20;
+SELECT * FROM products WHERE Price BETWEEN 10 AND 20 AND CategoryID NOT IN (1,2,3);
+SELECT * FROM products WHERE ProductName NOT BETWEEN 'Carnarvon Tigers' AND 'Mozzarella di Giovanni' ORDER BY ProductName;
+SELECT * FROM orders WHERE OrderDate BETWEEN '1996-07-01' AND '1996-07-31';
+
+
+(alias)
+SELECT CustomerID AS ID, CustomerName AS Customer FROM customers ;
+SELECT CustomerName AS Customer, ContactName AS "Contact Person" FROM customers ;
+SELECT CustomerName, CONCAT_WS(', ', Address, PostalCode, City, Country) AS Address FROM customers ;
+SELECT o.OrderID, o.OrderDate, c.CustomerName FROM customers AS c, orders AS o WHERE c.CustomerName='Around the Horn' AND c.CustomerID=o.CustomerID;
+SELECT orders.OrderID, orders.OrderDate, customers.CustomerName FROM customers, Orders WHERE customers.CustomerName='Around the Horn' AND customers.CustomerID=orders.CustomerID;
+
+
+(join)
+SELECT orders.OrderID, customers.CustomerName FROM orders INNER JOIN customers ON orders.CustomerID = customers.CustomerID;
+SELECT orders.OrderID, customers.CustomerName, shippers.ShipperName FROM ((ordersINNER JOIN customers ON orders.CustomerID = customers.CustomerID)INNER JOIN shippers ON orders.ShipperID = shippers.ShipperID);
+
+
+(union)
+SELECT City FROM customers UNION ALL SELECT City FROM suppliers ORDER BY City;
+
+SELECT City, Country FROM customers
+WHERE Country='Germany'
+UNION ALL
+SELECT City, Country FROM suppliers
+WHERE Country='Germany'
+ORDER BY City;
+
+SELECT 'Customer' AS Type, ContactName, City, Country
+FROM customers
+UNION
+SELECT 'Supplier', ContactName, City, Country
+FROM suppliers;
+
+
+(group by)
+SELECT COUNT(CustomerID), Country FROM customers GROUP BY Country;
+SELECT COUNT(CustomerID), Country FROM customers GROUP BY Country ORDER BY COUNT(CustomerID) DESC;
+SELECT Shippers.ShipperName, COUNT(orders.OrderID) AS NumberOfOrders FROM orders LEFT JOIN Shippers ON orders.ShipperID = shippers.ShipperID GROUP BY ShipperName;
+
+
+(having)
+SELECT COUNT(CustomerID), Country
+FROM customers
+GROUP BY Country
+HAVING COUNT(CustomerID) > 5;
+
+SELECT COUNT(CustomerID), Country
+FROM customers
+GROUP BY Country
+HAVING COUNT(CustomerID) > 5
+ORDER BY COUNT(CustomerID) DESC;
+
+SELECT employees.LastName, COUNT(orders.OrderID) AS NumberOfOrders
+FROM (orders
+INNER JOIN employees ON orders.EmployeeID = employees.EmployeeID)
+GROUP BY LastName
+HAVING COUNT(orders.OrderID) > 10;
+
+SELECT employees.LastName, COUNT(orders.OrderID) AS NumberOfOrders
+FROM orders
+INNER JOIN employees ON orders.EmployeeID = employees.EmployeeID
+WHERE LastName = 'Davolio' OR LastName = 'Fuller'
+GROUP BY LastName
+HAVING COUNT(orders.OrderID) > 25;
+
+
+(exist)
+SELECT SupplierName FROM suppliers WHERE EXISTS (SELECT ProductName FROM products WHERE products.SupplierID = suppliers.supplierID AND Price < 20);
+SELECT SupplierName FROM suppliers WHERE EXISTS (SELECT ProductName FROM products WHERE products.SupplierID = suppliers.supplierID AND Price = 22);
+
+
+(any, all)
+SELECT ProductName
+FROM products
+WHERE ProductID = ANY
+  (SELECT ProductID
+  FROM orderdetails
+  WHERE Quantity = 10);
+  
+SELECT ProductName
+FROM products
+WHERE ProductID = ANY
+  (SELECT ProductID
+  FROM orderdetails
+  WHERE Quantity > 99);
+  
+SELECT ProductName
+FROM products
+WHERE ProductID = ANY
+  (SELECT ProductID
+  FROM orderdetails
+  WHERE Quantity > 1000);
+  
+SELECT ALL ProductName
+FROM products
+WHERE TRUE;
+
+SELECT ProductName
+FROM products
+WHERE ProductID = ALL
+  (SELECT ProductID
+  FROM orderdetails
+  WHERE Quantity = 10);
+
+
+(insert select)
+INSERT INTO customers (CustomerName, City, Country) SELECT SupplierName, City, Country FROM suppliers;
+INSERT INTO customers (CustomerName, ContactName, Address, City, PostalCode, Country) SELECT SupplierName, ContactName, Address, City, PostalCode, Country FROM suppliers;
+INSERT INTO customers (CustomerName, City, Country) SELECT SupplierName, City, Country FROM suppliers WHERE Country='Germany';
+
+
+(case)
+SELECT OrderID, Quantity,
+CASE
+    WHEN Quantity > 30 THEN 'The quantity is greater than 30'
+    WHEN Quantity = 30 THEN 'The quantity is 30'
+    ELSE 'The quantity is under 30'
+END AS QuantityText
+FROM orderdetails;
+
+SELECT CustomerName, City, Country
+FROM customers
+ORDER BY
+(CASE
+    WHEN City IS NULL THEN Country
+    ELSE City
+END);
+
+
+(null function)
+SELECT ProductName, UnitPrice * (UnitsInStock + UnitsOnOrder) FROM products;
+SELECT ProductName, UnitPrice * (UnitsInStock + IFNULL(UnitsOnOrder, 0)) FROM products;
+SELECT ProductName, UnitPrice * (UnitsInStock + COALESCE(UnitsOnOrder, 0)) FROM products;
+
+
+(comment)
+-- Select all:
+SELECT * FROM customers;
+
+SELECT * FROM customers -- WHERE City='Berlin';
+
+-- SELECT * FROM Customers;
+SELECT * FROM products;
+
+/*Select all the columns
+of all the records
+in the Customers table:*/
+SELECT * FROM customers;
+
+/*SELECT * FROM Customers;
+SELECT * FROM Products;
+SELECT * FROM Orders;
+SELECT * FROM Categories;*/
+SELECT * FROM suppliers;
+
+
+(operator)
++	Add	
+-	Subtract	
+*	Multiply	
+/	Divide	
+%	Modulo
+
+ &	Bitwise AND
+|	Bitwise OR
+^	Bitwise exclusive OR
+
+=	Equal to	
+>	Greater than	
+<	Less than	
+>=	Greater than or equal to	
+<=	Less than or equal to	
+<>	Not equal to
+
++=	Add equals
+-=	Subtract equals
+*=	Multiply equals
+/=	Divide equals
+%=	Modulo equals
+&=	Bitwise AND equals
+^-=	Bitwise exclusive equals
+|*=	Bitwise OR equals
+
+ALL	TRUE if all of the subquery values meet the condition	
+AND	TRUE if all the conditions separated by AND is TRUE	
+ANY	TRUE if any of the subquery values meet the condition	
+BETWEEN	TRUE if the operand is within the range of comparisons	
+EXISTS	TRUE if the subquery returns one or more records	
+IN	TRUE if the operand is equal to one of a list of expressions	
+LIKE	TRUE if the operand matches a pattern	
+NOT	Displays a record if the condition(s) is NOT TRUE	
+OR	TRUE if any of the conditions separated by OR is TRUE	
+SOME	TRUE if any of the subquery values meet the condition
+
+
+(alter table)
+ALTER TABLE Persons
+MODIFY COLUMN DateOfBirth year;
+ALTER TABLE Persons
+CHANGE COLUMN DateOfBirth year;
+ALTER TABLE Persons
+DROP COLUMN DateOfBirth;
+ALTER TABLE Persons
+ADD DateOfBirth date;
+ALTER TABLE Persons RENAME TO person;
+
+
+
+
+
+
+
+
+
