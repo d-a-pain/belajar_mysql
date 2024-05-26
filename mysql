@@ -41,6 +41,9 @@ VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway
 (load data)
 load data infile '../mysql/(nama file .txt/.csv)' into table (nama table) fileds terminated by ',' enclosed by '"' ignore 1 lines;
 
+load data local infile '../mysql/(nama file .txt/.csv)' replace into table (nama table) fileds terminated by ',' enclosed by '"' ignore 1 lines;
+
+
 
 (update) 
 UPDATE customers SET ContactName = 'Alfred Schmidt', City = 'Frankfurt' WHERE customerID = 1;
