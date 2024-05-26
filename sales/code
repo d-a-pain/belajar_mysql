@@ -15,6 +15,9 @@ DROP INDEX - deletes an index
 SELECT CustomerName, City, Country FROM customers;
 SELECT * FROM customers;
 
+(distinct)
+SELECT distinct City FROM customers;
+
 
 (where)
 SELECT * FROM customers WHERE Country = 'Mexico';
