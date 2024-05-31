@@ -1,0 +1,2 @@
+UPDATE customers SET ContactName = 'Alfred Schmidt', City = 'Frankfurt' WHERE customerID = 1;
+UPDATE customers SET PostalCode = 00000;
