@@ -1,0 +1,2 @@
+SELECT orders.OrderID, customers.CustomerName FROM orders INNER JOIN customers ON orders.CustomerID = customers.CustomerID;
+SELECT orders.OrderID, customers.CustomerName, shippers.ShipperName FROM ((ordersINNER JOIN customers ON orders.CustomerID = customers.CustomerID)INNER JOIN shippers ON orders.ShipperID = shippers.ShipperID);
