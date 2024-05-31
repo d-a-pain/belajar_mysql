@@ -1,0 +1,31 @@
+SELECT ProductName
+FROM products
+WHERE ProductID = ANY
+  (SELECT ProductID
+  FROM orderdetails
+  WHERE Quantity = 10);
+  
+SELECT ProductName
+FROM products
+WHERE ProductID = ANY
+  (SELECT ProductID
+  FROM orderdetails
+  WHERE Quantity > 99);
+  
+SELECT ProductName
+FROM products
+WHERE ProductID = ANY
+  (SELECT ProductID
+  FROM orderdetails
+  WHERE Quantity > 1000);
+  
+SELECT ALL ProductName
+FROM products
+WHERE TRUE;
+
+SELECT ProductName
+FROM products
+WHERE ProductID = ALL
+  (SELECT ProductID
+  FROM orderdetails
+  WHERE Quantity = 10);
