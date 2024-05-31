@@ -1,0 +1,9 @@
+CREATE USER '(nama user)'
+
+CREATE USER '(nama user)'@'localhost' INDETIFIED BY '(password)'  # hanya bisa diakses melalu komputer localhost
+
+CREATE USER '(nama user)'@'192.168.1.25' INDETIFIED BY '(password)'  # hanya bisa diakses melalu komputer dengan ip 192.168.1.25
+
+CREATE USER '(nama user)'@'192.168.1.%' INDETIFIED BY '(password)'  # hanya bisa diakses melalu komputer dengan ip 192.168.1.1 sampai dengan ip 192.168.1.255
+
+CREATE USER '(nama user)'@'%' INDETIFIED BY '(password)'  # bisa diakses melalu semua komputer asal tau password dan user
