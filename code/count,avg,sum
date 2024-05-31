@@ -1,0 +1,3 @@
+SELECT COUNT(ProductID) FROM products;
+SELECT AVG(Price) FROM products;
+SELECT SUM(Quantity) FROM orderdetails;
