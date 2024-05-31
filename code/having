@@ -1,0 +1,23 @@
+SELECT COUNT(CustomerID), Country
+FROM customers
+GROUP BY Country
+HAVING COUNT(CustomerID) > 5;
+
+SELECT COUNT(CustomerID), Country
+FROM customers
+GROUP BY Country
+HAVING COUNT(CustomerID) > 5
+ORDER BY COUNT(CustomerID) DESC;
+
+SELECT employees.LastName, COUNT(orders.OrderID) AS NumberOfOrders
+FROM (orders
+INNER JOIN employees ON orders.EmployeeID = employees.EmployeeID)
+GROUP BY LastName
+HAVING COUNT(orders.OrderID) > 10;
+
+SELECT employees.LastName, COUNT(orders.OrderID) AS NumberOfOrders
+FROM orders
+INNER JOIN employees ON orders.EmployeeID = employees.EmployeeID
+WHERE LastName = 'Davolio' OR LastName = 'Fuller'
+GROUP BY LastName
+HAVING COUNT(orders.OrderID) > 25;
