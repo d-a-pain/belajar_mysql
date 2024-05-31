@@ -1,0 +1,5 @@
+SELECT * FROM customers WHERE Country = 'Germany' AND City = 'Berlin';
+SELECT * FROM Customers WHERE City = 'Berlin' OR City = 'Stuttgart';
+SELECT * FROM customers WHERE NOT Country = 'Germany';
+SELECT * FROM customers WHERE Country = 'Germany' AND (City = 'Berlin' OR City = 'Stuttgart');
+SELECT * FROM customers WHERE NOT Country = 'Germany' AND NOT Country = 'USA';
