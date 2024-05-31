@@ -23,8 +23,7 @@ SELECT distinct City FROM customers;
 SELECT * FROM customers WHERE Country = 'Mexico';
 SELECT * FROM customers WHERE CustomerID = 1;
 
-(peng
-hubung)
+(peng hubung (and, or, not))
 SELECT * FROM customers WHERE Country = 'Germany' AND City = 'Berlin';
 SELECT * FROM Customers WHERE City = 'Berlin' OR City = 'Stuttgart';
 SELECT * FROM customers WHERE NOT Country = 'Germany';
