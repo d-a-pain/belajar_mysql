@@ -1,4 +1,4 @@
-GRANT SELECT ON (nama_database.nama_tabel) TO 'nama_user'@'(lokasi_user/ip)';  # bisa select, insert, update, dan delete
+GRANT SELECT ON (nama_database.nama_tabel) TO 'nama_user'@'(lokasi_user/ip)';  # bisa select, insert, update, delete, dan alter
 
 GRANT SELECT (kolom1, kolom2) ON (nama_database.nama_tabel) TO 'nama_user'@'(lokasi_user/ip);
 
@@ -6,4 +6,4 @@ GRANT SELECT (kolom1, kolom2) ON (nama_database.*) TO 'nama_user'@'(lokasi_user/
 
 GRANT SELECT (kolom1, kolom2) ON (*.*) TO 'nama_user'@'(lokasi_user/ip); # tanda (*) digunakan untuk memberi akses (select) semua database pada user tersebut
 
-GRANT ALL ON (*.*) TO 'nama_user'@'(lokasi_user/ip); # tanda (*) digunakan untuk memberi akses (select, insert, update, dan delete) semua database pada user tersebut
+GRANT ALL ON (*.*) TO 'nama_user'@'(lokasi_user/ip); # tanda (*) digunakan untuk memberi akses (select, insert, update, delete, dan alter) semua database pada user tersebut
