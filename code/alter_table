@@ -1,0 +1,13 @@
+ALTER TABLE Persons
+MODIFY COLUMN DateOfBirth year;
+
+ALTER TABLE Persons
+CHANGE COLUMN DateOfBirth year;
+
+ALTER TABLE Persons
+DROP COLUMN DateOfBirth;
+
+ALTER TABLE Persons
+ADD DateOfBirth date;
+
+ALTER TABLE Persons RENAME TO person;
