@@ -1,0 +1,5 @@
+SELECT user,host FROM mysql.user;
+
+SHOW GRANTS FOR '(nama user)' \G
+
+SHOW GRANTS FOR '(nama user)'@'(localhost/ip)' \G
