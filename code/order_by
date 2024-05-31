@@ -1,0 +1,4 @@
+SELECT * FROM customers ORDER BY Country;
+SELECT * FROM customers ORDER BY Country DESC;
+SELECT * FROM customers ORDER BY Country, CustomerName;
+SELECT * FROM customers ORDER BY Country ASC, CustomerName DESC;
