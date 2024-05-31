@@ -1,1 +1,14 @@
 SELECT City FROM customers UNION ALL SELECT City FROM suppliers ORDER BY City;
+
+SELECT City, Country FROM customers
+WHERE Country='Germany'
+UNION ALL
+SELECT City, Country FROM suppliers
+WHERE Country='Germany'
+ORDER BY City;
+
+SELECT 'Customer' AS Type, ContactName, City, Country
+FROM customers
+UNION
+SELECT 'Supplier', ContactName, City, Country
+FROM suppliers;
