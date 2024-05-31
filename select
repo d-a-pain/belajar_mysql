@@ -1,0 +1,2 @@
+SELECT CustomerName, City, Country FROM customers;
+SELECT * FROM customers;
