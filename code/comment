@@ -1,0 +1,19 @@
+-- Select all:
+SELECT * FROM customers;
+
+SELECT * FROM customers -- WHERE City='Berlin';
+
+-- SELECT * FROM Customers;
+SELECT * FROM products;
+
+/*Select all the columns
+of all the records
+in the Customers table:*/
+SELECT * FROM customers;
+
+/*SELECT * FROM Customers;
+SELECT * FROM Products;
+SELECT * FROM Orders;
+SELECT * FROM Categories;*/
+SELECT * FROM suppliers;
+
