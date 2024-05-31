@@ -1,0 +1,3 @@
+DROP USER '(nama user)';
+
+DROP USER '(nama user)'@'(ip user)';
