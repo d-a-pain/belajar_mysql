@@ -1,0 +1,5 @@
+SELECT CustomerID AS ID, CustomerName AS Customer FROM customers ;
+SELECT CustomerName AS Customer, ContactName AS "Contact Person" FROM customers ;
+SELECT CustomerName, CONCAT_WS(', ', Address, PostalCode, City, Country) AS Address FROM customers ;
+SELECT o.OrderID, o.OrderDate, c.CustomerName FROM customers AS c, orders AS o WHERE c.CustomerName='Around the Horn' AND c.CustomerID=o.CustomerID;
+SELECT orders.OrderID, orders.OrderDate, customers.CustomerName FROM customers, Orders WHERE customers.CustomerName='Around the Horn' AND customers.CustomerID=orders.CustomerID;
