@@ -1,0 +1,2 @@
+SELECT * FROM customers WHERE CustomerName REGEXP '^s.*';
+SELECT * FROM customers WHERE CustomerName REGEXP '^[ms].*[aiueo]$';
