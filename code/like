@@ -1,7 +1,0 @@
-SELECT * FROM customers WHERE CustomerName LIKE 'a%';
-SELECT * FROM customers WHERE CustomerName LIKE '%a';
-SELECT * FROM customers WHERE CustomerName LIKE '%or%';
-SELECT * FROM customers WHERE CustomerName LIKE '_r%';
-SELECT * FROM customers WHERE CustomerName LIKE 'a__%';
-SELECT * FROM customers WHERE ContactName LIKE 'a%o';
-SELECT * FROM customers WHERE CustomerName NOT LIKE 'a%';

@@ -1,0 +1,23 @@
+SELECT * FROM customers WHERE CustomerName LIKE 'a%';
+SELECT * FROM customers WHERE CustomerName LIKE '%a';
+SELECT * FROM customers WHERE CustomerName LIKE '%or%';
+SELECT * FROM customers WHERE CustomerName LIKE '_r%';
+SELECT * FROM customers WHERE CustomerName LIKE 'a__%';
+SELECT * FROM customers WHERE ContactName LIKE 'a%o';
+SELECT * FROM customers WHERE CustomerName NOT LIKE 'a%';
+
+
+LIKE Operator	Description
+WHERE CustomerName LIKE 'a%'	Finds any values that start with "a"
+WHERE CustomerName LIKE '%a'	Finds any values that end with "a"
+WHERE CustomerName LIKE '%or%'	Finds any values that have "or" in any position
+WHERE CustomerName LIKE '_r%'	Finds any values that have "r" in the second position
+WHERE CustomerName LIKE 'a_%'	Finds any values that start with "a" and are at least 2 characters in length
+WHERE CustomerName LIKE 'a__%'	Finds any values that start with "a" and are at least 3 characters in length
+WHERE ContactName LIKE 'a%o'	Finds any values that start with "a" and ends with "o"
+
+'S%' : Cocok dengan kata yang diawali dengan S, dan diikuti dengan karakter apa saja, contoh: 'S', 'Sa', 'Si', 'Saaaaaa', 'Susi', dan 'Sabrina Sari'.
+'S_': Cocok dengan kata yang diawali dengan S, dan diikuti dengan satu karakter apa saja, contoh: 'Si', 'Sa', 'Su', 'Se', dan 'St'.
+'A__i': Cocok dengan kata yang diawali dengan 'A', diikuti oleh 2 karakter bebas, namun diakhiri dengan i, contoh: 'Andi', 'ardi', 'aaai'.
+'%e': Cocok dengan seluruh kata dengan panjang berapapun yang diakhiri dengan huruf 'e', contoh: 'Kece', 'Kue', dan 'mie'.
+'%dia%': Cocok dengan seluruh kata yang mengandung kata 'dia', contoh: 'media', 'kemudian', 'dia', dan  'diaaaa'.
