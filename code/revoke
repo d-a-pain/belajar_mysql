@@ -1,0 +1,6 @@
+revoke adalah menghapus akses pada suatu user
+
+untuk menggunakan revoke harus login sebgai root
+
+(code)
+REVOKE (akses (select, update, delete, dll , all privileges) ON (nama database).(nama tabel) FROM '(nama user)'@'(localhost/%/ip)';
