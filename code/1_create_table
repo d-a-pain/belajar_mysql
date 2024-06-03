@@ -1,0 +1,1 @@
+create table customers(CustomerID int(4) PRIMARY KEY, CustomerName varchar(30), ContacName varchar(30), Address City varchar(60), PostalCode varchar(15), Country varchar(20));
