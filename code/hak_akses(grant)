@@ -7,3 +7,5 @@ GRANT SELECT (kolom1, kolom2) ON (nama_database.*) TO 'nama_user'@'(lokasi_user/
 GRANT SELECT (kolom1, kolom2) ON (*.*) TO 'nama_user'@'(lokasi_user/ip); # tanda (*) digunakan untuk memberi akses (select) semua database pada user tersebut
 
 GRANT ALL PRIVILEGES ON (*.*) TO 'nama_user'@'(lokasi_user/ip); # tanda (*) digunakan untuk memberi akses (select, insert, update, delete, dan alter) semua database pada user tersebut
+
+GRANT ALL ON (*.*) TO 'nama_user'@'(lokasi_user/ip); # tanda (*) digunakan untuk memberi akses (select, insert, update, delete, dan alter) semua database pada user tersebut
