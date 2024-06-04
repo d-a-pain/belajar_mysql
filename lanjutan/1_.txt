@@ -1,0 +1,52 @@
+DROP DATABASE IF EXISTS mahasiswa;
+CREATE DATABASE mahasiswa;
+USE mahasiswa;
+  
+DROP TABLE IF EXISTS daftar_dosen;
+CREATE TABLE daftar_dosen (
+            NIP CHAR(10) PRIMARY KEY,
+            nama_dosen VARCHAR(50) NOT NULL,
+            no_hp CHAR(13),
+            alamat VARCHAR(100))
+            collate utf8_general_ci;
+  
+INSERT INTO daftar_dosen VALUES
+('0160436012','Sabrina Sari','0812349900','Pekanbaru');         
+INSERT INTO daftar_dosen VALUES
+('0260432002','Maya Ari Putri','0812345234','Palembang');
+INSERT INTO daftar_dosen VALUES
+('0275430005','Susi Indriani','0812656532','Palembang');
+INSERT INTO daftar_dosen VALUES
+('0480432066','Tia SariSantrini','0812451177','Padang');
+INSERT INTO daftar_dosen VALUES
+('0576431001','M. Siddiq','0812979005','Jakarta');
+INSERT INTO daftar_dosen VALUES
+('0770435006','Rubin Hadi','0812567678','Papua');
+INSERT INTO daftar_dosen VALUES
+('0869437003','Arif Mustalifah','0812338877','Aceh');
+INSERT INTO daftar_dosen VALUES
+('1080432007','Arif Budiman','0812456345','Jakarta');
+  
+DROP TABLE IF EXISTS mata_kuliah;
+CREATE TABLE mata_kuliah (
+            kode_matkul CHAR(6) PRIMARY KEY,
+            nama_matkul VARCHAR(50) NOT NULL,
+            jumlah_SKS TINYINT UNSIGNED DEFAULT '2',
+            semester TINYINT,
+            NIP_dosen CHAR(10))
+            collate utf8_general_ci;
+  
+INSERT INTO mata_kuliah VALUES
+('MATDAS','Matematika Dasar',4,1,'0160436012');
+INSERT INTO mata_kuliah VALUES
+('FISDAS','Fisika Dasar',2,1,'0480432066');
+INSERT INTO mata_kuliah VALUES
+('TEKKOM','Teknik Kompilasi',2,6,'0480432066');
+INSERT INTO mata_kuliah VALUES
+('JARKOM','Jaringan Komputer',3,3,'0770435006');
+INSERT INTO mata_kuliah VALUES
+('DTBASE','Database',4,4,'0275430005');
+INSERT INTO mata_kuliah VALUES
+('SISOPR','Sistem Operasi',2,4,'0160436012');
+INSERT INTO mata_kuliah VALUES
+('MIKROP','Mikro Prosesor',2,5,'0480432066');
