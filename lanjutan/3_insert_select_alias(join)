@@ -1,0 +1,3 @@
+insert into gabung (NIP, nama_dosen, nama_matkul) select do.NIP, do.nama_dosen, mk.nama_matkul from daftar_dosen as do, mata_kuliah as mk where do.NIP=mk.NIP_dosen;
+
+insert into gabung (NIP, nama_dosen, nama_matkul) select do.NIP, do.nama_dosen, mk.nama_matkul from daftar_dosen as do join mata_kuliah as mk ON do.NIP=mk.NIP_dosen;
