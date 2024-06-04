@@ -1,0 +1,92 @@
+mysql> SELECT nama_dosen FROM daftar_dosen;
++------------------+
+| nama_dosen       |
++------------------+
+| Sabrina Sari     |
+| Maya Ari Putri   |
+| Susi Indriani    |
+| Tia SariSantrini |
+| M. Siddiq        |
+| Rubin Hadi       |
+| Arif Mustalifah  |
+| Arif Budiman     |
++------------------+
+8 rows in set (0.09 sec)
+  
+mysql> SELECT UPPER(nama_dosen) FROM daftar_dosen;
++-------------------+
+| UPPER(nama_dosen) |
++-------------------+
+| SABRINA SARI      |
+| MAYA ARI PUTRI    |
+| SUSI INDRIANI     |
+| TIA SARISANTRINI  |
+| M. SIDDIQ         |
+| RUBIN HADI        |
+| ARIF MUSTALIFAH   |
+| ARIF BUDIMAN      |
++-------------------+
+8 rows in set (0.02 sec)
+
+
+
+(2)
+
+mysql> SELECT UPPER(nama_dosen) AS 'Nama Dosen',
+UPPER(alamat) AS 'Alamat' FROM daftar_dosen;
++------------------+-----------+
+| Nama Dosen       | Alamat    |
++------------------+-----------+
+| SABRINA SARI     | PEKANBARU |
+| MAYA ARI PUTRI   | PALEMBANG |
+| SUSI INDRIANI    | PALEMBANG |
+| TIA SARISANTRINI | PADANG    |
+| M. SIDDIQ        | JAKARTA   |
+| RUBIN HADI       | PAPUA     |
+| ARIF MUSTALIFAH  | ACEH      |
+| ARIF BUDIMAN     | JAKARTA   |
++------------------+-----------+
+8 rows in set (0.00 sec)
+
+
+
+(3)
+
+mysql> SELECT LOWER(nama_dosen) AS 'Nama Dosen', 
+LOWER(alamat) AS 'Alamat' FROM daftar_dosen;
++------------------+-----------+
+| Nama Dosen       | Alamat    |
++------------------+-----------+
+| sabrina sari     | pekanbaru |
+| maya ari putri   | palembang |
+| susi indriani    | palembang |
+| tia sarisantrini | padang    |
+| m. siddiq        | jakarta   |
+| rubin hadi       | papua     |
+| arif mustalifah  | aceh      |
+| arif budiman     | jakarta   |
++------------------+-----------+
+8 rows in set (0.00 sec)
+
+
+
+(4)
+
+mysql> UPDATE daftar_dosen SET nama_dosen = UPPER (nama_dosen);
+Query OK, 8 rows affected (0.16 sec)
+Rows matched: 8  Changed: 8  Warnings: 0
+  
+mysql> SELECT * FROM daftar_dosen;
++------------+------------------+------------+-----------+
+| NIP        | nama_dosen       | no_hp      | alamat    |
++------------+------------------+------------+-----------+
+| 0160436012 | SABRINA SARI     | 0812349900 | Pekanbaru |
+| 0260432002 | MAYA ARI PUTRI   | 0812345234 | Palembang |
+| 0275430005 | SUSI INDRIANI    | 0812656532 | Palembang |
+| 0480432066 | TIA SARISANTRINI | 0812451177 | Padang    |
+| 0576431001 | M. SIDDIQ        | 0812979005 | Jakarta   |
+| 0770435006 | RUBIN HADI       | 0812567678 | Papua     |
+| 0869437003 | ARIF MUSTALIFAH  | 0812338877 | Aceh      |
+| 1080432007 | ARIF BUDIMAN     | 0812456345 | Jakarta   |
++------------+------------------+------------+-----------+
+8 rows in set (0.00 sec)
