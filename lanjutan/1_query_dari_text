@@ -1,4 +1,22 @@
+(cara ke 1)
 membuat database dari query yang disimpan dalam file.txt
 
 siapkan file yang berisi query
 
+(contoh query terdapat pada file 1_.txt)
+
+setelah siap file kemudian buka terminal
+
+pada terminal pindah ke terminal dimana file tersebut disimpan
+
+kemudian ketik kode berikut : mysql -u root -p < (nama file)
+
+
+(cara ke 2)
+atau juga bisa dengan cara masuk ke mysql
+
+kemudian ketik kode berikut : cource (nama file)
+
+sebelumnya query(.txt) telah disimpan di folder mysql 
+
+linux ( var/lib/mysql)
