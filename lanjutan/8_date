@@ -1,0 +1,138 @@
+mysql> CREATE TABLE belajar_date (dt DATE,ts TIMESTAMP);
+Query OK, 0 rows affected (0.08 sec)
+  
+mysql> INSERT INTO belajar_date VALUES ('2015-08-10','2015-08-10 08:30:15');
+Query OK, 1 row affected (0.03 sec)
+  
+mysql> INSERT INTO belajar_date VALUES ('2016-08-17','2016-08-17 10:01:01');
+Query OK, 1 row affected (0.04 sec)
+  
+mysql> INSERT INTO belajar_date VALUES ('2017-12-31','2017-12-31 23:59:59');
+Query OK, 1 row affected (0.05 sec)
+  
+mysql> SELECT * FROM belajar_date;
++------------+---------------------+
+| dt         | ts                  |
++------------+---------------------+
+| 2015-08-10 | 2015-08-10 08:30:15 |
+| 2016-08-17 | 2016-08-17 10:01:01 |
+| 2017-12-31 | 2017-12-31 23:59:59 |
++------------+---------------------+
+3 rows in set (0.00 sec)
+
+
+
+
+(2)
+
+mysql> SELECT YEAR(dt) FROM belajar_date;
++----------+
+| YEAR(dt) |
++----------+
+|     2015 |
+|     2016 |
+|     2017 |
++----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT MONTH(dt) FROM belajar_date;
++-----------+
+| MONTH(dt) |
++-----------+
+|         8 |
+|         8 |
+|        12 |
++-----------+
+3 rows in set (0.00 sec)
+  
+mysql> SELECT DAY(dt) FROM belajar_date;
++---------+
+| DAY(dt) |
++---------+
+|      10 |
+|      17 |
+|      31 |
++---------+
+3 rows in set (0.00 sec)
+
+
+
+(3)
+
+mysql> SELECT HOUR(ts) FROM belajar_date;
++----------+
+| HOUR(ts) |
++----------+
+|        8 |
+|       10 |
+|       23 |
++----------+
+3 rows in set (0.00 sec)
+  
+mysql> SELECT MINUTE(ts) FROM belajar_date;
++------------+
+| MINUTE(ts) |
++------------+
+|         30 |
+|          1 |
+|         59 |
++------------+
+3 rows in set (0.00 sec)
+  
+mysql> SELECT SECOND(ts) FROM belajar_date;
++------------+
+| SECOND(ts) |
++------------+
+|         15 |
+|          1 |
+|         59 |
++------------+
+3 rows in set (0.00 sec)
+  
+mysql> SELECT DAYOFYEAR(ts) FROM belajar_date;
++---------------+
+| DAYOFYEAR(ts) |
++---------------+
+|           222 |
+|           230 |
+|           365 |
++---------------+
+3 rows in set (0.00 sec)
+  
+mysql> SELECT DAYNAME(ts) FROM belajar_date;
++-------------+
+| DAYNAME(ts) |
++-------------+
+| Monday      |
+| Wednesday   |
+| Sunday      |
++-------------+
+3 rows in set (0.06 sec)
+  
+mysql> SELECT ts, DAYNAME(ts) FROM belajar_date;
++---------------------+-------------+
+| ts                  | DAYNAME(ts) |
++---------------------+-------------+
+| 2015-08-10 08:30:15 | Monday      |
+| 2016-08-17 10:01:01 | Wednesday   |
+| 2017-12-31 23:59:59 | Sunday      |
++---------------------+-------------+
+3 rows in set (0.00 sec)
+
+
+
+(4)
+
+mysql> INSERT INTO belajar_date VALUES (CURDATE(), NOW());
+Query OK, 1 row affected (0.03 sec)
+  
+mysql> SELECT * FROM belajar_date;
++------------+---------------------+
+| dt         | ts                  |
++------------+---------------------+
+| 2015-08-10 | 2015-08-10 08:30:15 |
+| 2016-08-17 | 2016-08-17 10:01:01 |
+| 2017-12-31 | 2017-12-31 23:59:59 |
+| 2015-08-04 | 2015-08-04 15:34:14 |
++------------+---------------------+
+4 rows in set (0.00 sec)
