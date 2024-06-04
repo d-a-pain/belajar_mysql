@@ -1,0 +1,28 @@
+MariaDB [mahasiswa]> SELECT * FROM daftar_dosen;
++------------+------------------+------------+-----------+
+| NIP        | nama_dosen       | no_hp      | alamat    |
++------------+------------------+------------+-----------+
+| 0160436012 | Sabrina Sari     | 0812349900 | Pekanbaru |
+| 0260432002 | Maya Ari Putri   | 0812345234 | Palembang |
+| 0275430005 | Susi Indriani    | 0812656532 | Palembang |
+| 0480432066 | Tia SariSantrini | 0812451177 | Padang    |
+| 0576431001 | M. Siddiq        | 0812979005 | Jakarta   |
+| 0770435006 | Rubin Hadi       | 0812567678 | Papua     |
+| 0869437003 | Arif Mustalifah  | 0812338877 | Aceh      |
+| 1080432007 | Arif Budiman     | 0812456345 | Jakarta   |
++------------+------------------+------------+-----------+
+8 rows in set (0.000 sec)
+
+MariaDB [mahasiswa]> SELECT * FROM mata_kuliah;
++-------------+-------------------+------------+----------+------------+
+| kode_matkul | nama_matkul       | jumlah_SKS | semester | NIP_dosen  |
++-------------+-------------------+------------+----------+------------+
+| DTBASE      | Database          |          4 |        4 | 0275430005 |
+| FISDAS      | Fisika Dasar      |          2 |        1 | 0480432066 |
+| JARKOM      | Jaringan Komputer |          3 |        3 | 0770435006 |
+| MATDAS      | Matematika Dasar  |          4 |        1 | 0160436012 |
+| MIKROP      | Mikro Prosesor    |          2 |        5 | 0480432066 |
+| SISOPR      | Sistem Operasi    |          2 |        4 | 0160436012 |
+| TEKKOM      | Teknik Kompilasi  |          2 |        6 | 0480432066 |
++-------------+-------------------+------------+----------+------------+
+7 rows in set (0.000 sec)
