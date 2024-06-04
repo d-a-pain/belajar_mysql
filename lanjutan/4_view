@@ -1,0 +1,36 @@
+(1)
+mysql> CREATE VIEW dosen_jakarta AS SELECT NIP, nama_dosen, alamat FROM
+daftar_dosen WHERE alamat = 'Jakarta';
+Query OK, 0 rows affected (0.17 sec)
+  
+mysql> SELECT * FROM dosen_jakarta;
++------------+--------------+---------+
+| NIP        | nama_dosen   | alamat  |
++------------+--------------+---------+
+| 0576431001 | M. Siddiq    | Jakarta |
+| 1080432007 | Arif Budiman | Jakarta |
++------------+--------------+---------+
+2 rows in set (0.15 sec)
+
+
+
+(2)
+
+mysql> INSERT INTO daftar_dosen VALUES
+('0160431112','Sarah','0812349900','Jakarta');
+Query OK, 1 row affected (0.05 sec)
+ 
+mysql> INSERT INTO daftar_dosen VALUES
+('1180123464','Nurhayati Koto','0812349222','Jakarta');
+Query OK, 1 row affected (0.04 sec)
+  
+mysql> SELECT * FROM dosen_jakarta;
++------------+----------------+---------+
+| NIP        | nama_dosen     | alamat  |
++------------+----------------+---------+
+| 0160431112 | Sarah          | Jakarta |
+| 0576431001 | M. Siddiq      | Jakarta |
+| 1080432007 | Arif Budiman   | Jakarta |
+| 1180123464 | Nurhayati Koto | Jakarta |
++------------+----------------+---------+
+4 rows in set (0.00 sec)
