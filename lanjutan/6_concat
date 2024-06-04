@@ -1,0 +1,33 @@
+mysql> SELECT CONCAT_WS(', nama mata kuliah: ',kode_matkul, nama_matkul) 
+AS 'Mata Kuliah' FROM mata_kuliah;
++---------------------------------------------+
+| Mata Kuliah                                 |
++---------------------------------------------+
+| DTBASE, nama mata kuliah: Database          |
+| FISDAS, nama mata kuliah: Fisika Dasar      |
+| JARKOM, nama mata kuliah: Jaringan Komputer |
+| MATDAS, nama mata kuliah: Matematika Dasar  |
+| MIKROP, nama mata kuliah: Mikro Prosesor    |
+| SISOPR, nama mata kuliah: Sistem Operasi    |
+| TEKKOM, nama mata kuliah: Teknik Kompilasi  |
++---------------------------------------------+
+7 rows in set (0.00 sec)
+
+
+
+(2)
+
+mysql> SELECT CONCAT_WS(' > ',kode_matkul, nama_matkul, jumlah_SKS, 
+semester) AS 'Mata Kuliah' FROM mata_kuliah;
++------------------------------------+
+| Mata Kuliah                        |
++------------------------------------+
+| DTBASE > Database > 4 > 4          |
+| FISDAS > Fisika Dasar > 2 > 1      |
+| JARKOM > Jaringan Komputer > 3 > 3 |
+| MATDAS > Matematika Dasar > 4 > 1  |
+| MIKROP > Mikro Prosesor > 2 > 5    |
+| SISOPR > Sistem Operasi > 2 > 4    |
+| TEKKOM > Teknik Kompilasi > 2 > 6  |
++------------------------------------+
+7 rows in set (0.00 sec)
