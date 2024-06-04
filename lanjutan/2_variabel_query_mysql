@@ -1,0 +1,63 @@
+(contoh 1)
+
+mysql> USE mahasiswa;
+Database changed
+mysql> set @kota = 'Jakarta';
+Query OK, 0 rows affected (0.00 sec)
+  
+mysql> SELECT * FROM daftar_dosen WHERE alamat = @kota;
++------------+--------------+------------+---------+
+| NIP        | nama_dosen   | no_hp      | alamat  |
++------------+--------------+------------+---------+
+| 0576431001 | M. Siddiq    | 0812979005 | Jakarta |
+| 1080432007 | Arif Budiman | 0812456345 | Jakarta |
++------------+--------------+------------+---------+
+2 rows in set (0.00 sec)
+
+
+
+(contoh 2)
+
+mysql> set @jum_sks := 1+1;
+Query OK, 0 rows affected (0.11 sec)
+  
+mysql> SELECT @jum_sks;
++----------+
+| @jum_sks |
++----------+
+|        2 |
++----------+
+1 row in set (0.00 sec)
+  
+mysql> SELECT * FROM mata_kuliah WHERE jumlah_SKS = @jum_sks;
++-------------+------------------+------------+----------+------------+
+| kode_matkul | nama_matkul      | jumlah_SKS | semester | NIP_dosen  |
++-------------+------------------+------------+----------+------------+
+| FISDAS      | Fisika Dasar     |          2 |        1 | 0480432066 |
+| MIKROP      | Mikro Prosesor   |          2 |        5 | 0480432066 |
+| SISOPR      | Sistem Operasi   |          2 |        4 | 0160436012 |
+| TEKKOM      | Teknik Kompilasi |          2 |        6 | 0480432066 |
++-------------+------------------+------------+----------+------------+
+4 rows in set (0.00 sec)
+
+
+
+(contoh 3)
+
+mysql> SELECT @kota := alamat FROM daftar_dosen WHERE
+nama_dosen = 'Maya Ari Putri';
++-----------------+
+| @kota := alamat |
++-----------------+
+| Palembang       |
++-----------------+
+1 row in set (0.00 sec)
+  
+mysql> SELECT * FROM daftar_dosen WHERE alamat = @kota;
++------------+----------------+------------+-----------+
+| NIP        | nama_dosen     | no_hp      | alamat    |
++------------+----------------+------------+-----------+
+| 0260432002 | Maya Ari Putri | 0812345234 | Palembang |
+| 0275430005 | Susi Indriani  | 0812656532 | Palembang |
++------------+----------------+------------+-----------+
+2 rows in set (0.00 sec)
