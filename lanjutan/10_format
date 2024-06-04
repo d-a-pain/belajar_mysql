@@ -1,0 +1,42 @@
+CREATE TABLE barang (
+  nama_barang VARCHAR(20),
+  harga_barang DECIMAL(10,3)
+);
+-- Query OK, 0 rows affected (0.268 sec)
+ 
+INSERT INTO barang VALUES
+('Laptop',7500000), ('TV',1999999.99), ('Speaker',500500.256);
+-- Query OK, 3 rows affected (0.068 sec)
+-- Records: 3  Duplicates: 0  Warnings: 0
+ 
+SELECT * FROM barang;
++-------------+--------------+
+| nama_barang | harga_barang |
++-------------+--------------+
+| Laptop      |  7500000.000 |
+| TV          |  1999999.990 |
+| Speaker     |   500500.256 |
++-------------+--------------+
+3 rows in set (0.001 sec)
+
+SELECT nama_barang, FORMAT(harga_barang,2,'id_ID') AS
+harga_barang FROM barang;
++-------------+--------------+
+| nama_barang | harga_barang |
++-------------+--------------+
+| Laptop      | 7.500.000,00 |
+| TV          | 1.999.999,99 |
+| Speaker     | 500.500,26   |
++-------------+--------------+
+3 rows in set (0.001 sec)
+
+SELECT nama_barang, CONCAT('Rp. ', FORMAT(harga_barang,2,'id_ID')) AS
+harga_barang FROM barang;
++-------------+------------------+
+| nama_barang | harga_barang     |
++-------------+------------------+
+| Laptop      | Rp. 7.500.000,00 |
+| TV          | Rp. 1.999.999,99 |
+| Speaker     | Rp. 500.500,26   |
++-------------+------------------+
+3 rows in set (0.001 sec)
