@@ -1,0 +1,9 @@
+mysqldump -u root -p --all-databases > all_databases.sql
+
+mysqldump -u root -p --all-databases > /var/lib/mysql/all_databases.sql
+
+
+
+(restore)
+
+mysql -u root -p --all-databases < all_databases.sql
